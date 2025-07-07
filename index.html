@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IQ MART</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>IQMARTLLC.COM - Multi Tool Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Global Styles */
+        /* CSS Reset */
         * {
             margin: 0;
             padding: 0;
@@ -14,137 +14,133 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        /* Global Styles */
         body {
             background-color: #1E1E2F;
             color: #EAEAEA;
-            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
         }
 
         /* Header Styles */
         header {
             background-color: #2B2D42;
-            padding: 1rem 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 20px 0;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: relative;
+            margin-bottom: 30px;
         }
 
-        .header-top {
-            width: 100%;
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
+            flex-wrap: wrap;
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo-img {
-            height: 40px;
-            width: auto;
-        }
-
-        .logo-text {
-            font-size: 1.8rem;
-            font-weight: bold;
+        .logo h1 {
             color: #FFD700;
-            text-decoration: none;
+            font-size: 2rem;
+            letter-spacing: 1px;
         }
 
-        .social-icons {
-            display: flex;
-            gap: 0.8rem;
-        }
-
-        .social-icon {
+        .logo span {
+            font-size: 0.8rem;
             color: #EAEAEA;
-            font-size: 1.2rem;
-            transition: color 0.3s;
+            display: block;
         }
 
-        .social-icon:hover {
-            color: #FFD700;
-        }
-
+        /* Navigation */
         .auth-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 15px;
         }
 
         .auth-btn {
-            padding: 0.5rem 1rem;
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .login-btn {
             background-color: transparent;
             border: 1px solid #FFD700;
             color: #FFD700;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
         }
 
-        .auth-btn:hover {
+        .login-btn:hover {
+            background-color: rgba(255, 215, 0, 0.1);
+        }
+
+        .signup-btn {
             background-color: #FFD700;
+            border: 1px solid #FFD700;
             color: #1E1E2F;
         }
 
-        .search-container {
-            width: 100%;
-            max-width: 600px;
-            position: relative;
-            margin-bottom: 1rem;
+        .signup-btn:hover {
+            background-color: #E6C200;
+            border-color: #E6C200;
         }
 
-        .search-input {
+        /* Search Bar */
+        .search-container {
             width: 100%;
-            padding: 0.8rem 1rem;
-            padding-left: 3rem;
-            border-radius: 25px;
+            margin: 20px 0;
+        }
+
+        .search-bar {
+            display: flex;
+            width: 100%;
+        }
+
+        .search-bar input {
+            flex-grow: 1;
+            padding: 12px 15px;
             border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
             background-color: #3A3D5B;
             color: #EAEAEA;
-            font-size: 1rem;
             outline: none;
         }
 
-        .search-icon {
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #EAEAEA;
+        .search-bar button {
+            padding: 12px 20px;
+            background-color: #FFD700;
+            color: #1E1E2F;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
         }
 
-        /* Main Content Styles */
-        main {
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            min-height: calc(100vh - 300px); /* Adjust based on footer height */
+        .search-bar button:hover {
+            background-color: #E6C200;
         }
 
-        .page-title {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #FFD700;
-            font-size: 2.5rem;
-        }
-
+        /* Tools Grid */
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
+            gap: 25px;
+            margin-bottom: 40px;
         }
 
+        /* Tool Card Styles */
         .tool-card {
             background-color: #3A3D5B;
-            border-radius: 10px;
-            padding: 1.5rem;
+            border-radius: 8px;
+            padding: 25px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 8px rgba(255, 215, 0, 0.2);
             display: flex;
@@ -154,499 +150,367 @@
 
         .tool-card:hover {
             background-color: #FFD700;
-            color: #1E1E2F;
             transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(255, 215, 0, 0.3);
+        }
+
+        .tool-card:hover h2,
+        .tool-card:hover p {
+            color: #1E1E2F;
         }
 
         .tool-card h2 {
-            margin-bottom: 0.8rem;
-            color: inherit;
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
         }
 
         .tool-card p {
-            margin-bottom: 1.5rem;
-            color: inherit;
+            margin-bottom: 20px;
             flex-grow: 1;
         }
 
-        .tool-btn {
-            padding: 0.6rem 1rem;
+        /* Button Styles */
+        .btn {
+            display: inline-block;
             background-color: #FFD700;
             color: #1E1E2F;
+            padding: 10px 20px;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
             font-weight: bold;
-            transition: all 0.3s ease;
-            align-self: flex-start;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            width: 100%;
         }
 
-        .tool-card:hover .tool-btn {
-            background-color: #1E1E2F;
-            color: #FFD700;
-        }
-
-        .tool-btn:hover {
-            background-color: #E6C200 !important;
+        .btn:hover {
+            background-color: #E6C200;
         }
 
         /* Footer Styles */
         footer {
             background-color: #2B2D42;
-            padding: 2rem 1.5rem;
-            text-align: center;
-            margin-top: 2rem;
+            margin-top: 40px;
+            padding: 40px 0 20px;
         }
 
         .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
         }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+        .footer-column h3 {
+            color: #FFD700;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
         }
 
-        .footer-link {
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
             color: #EAEAEA;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
         }
 
-        .footer-link:hover {
+        .footer-column ul li a:hover {
             color: #FFD700;
         }
 
-        .footer-social {
+        .social-links {
             display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 1.5rem 0;
+            gap: 15px;
+            margin-top: 15px;
         }
 
-        .footer-social-icon {
+        .social-links a {
             color: #EAEAEA;
             font-size: 1.5rem;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
         }
 
-        .footer-social-icon:hover {
+        .social-links a:hover {
             color: #FFD700;
         }
 
-        .footer-text {
-            color: #EAEAEA;
-            margin-top: 1rem;
-        }
-
-        /* Additional Page Styles */
-        .content-page {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-            background-color: #2B2D42;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .content-page h1 {
-            color: #FFD700;
-            margin-bottom: 1.5rem;
+        .copyright {
             text-align: center;
-        }
-
-        .content-page h2 {
-            color: #FFD700;
-            margin: 1.5rem 0 1rem;
-        }
-
-        .content-page p {
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .content-page ul {
-            margin-bottom: 1rem;
-            padding-left: 2rem;
-        }
-
-        .content-page li {
-            margin-bottom: 0.5rem;
-        }
-
-        .back-btn {
-            display: inline-block;
-            margin-top: 1.5rem;
-            padding: 0.6rem 1.2rem;
-            background-color: #FFD700;
-            color: #1E1E2F;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .back-btn:hover {
-            background-color: #E6C200;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .tools-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .header-top {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .logo-container {
-                margin-bottom: 0.5rem;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .social-icons {
-                margin-top: 0.5rem;
-            }
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #3A3D5B;
         }
 
         /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
-            top: 0;
+            z-index: 100;
             left: 0;
+            top: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
+            overflow: auto;
         }
 
         .modal-content {
             background-color: #2B2D42;
-            padding: 2rem;
-            border-radius: 10px;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 8px;
             width: 90%;
             max-width: 400px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
         }
 
-        .modal-title {
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #EAEAEA;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
             color: #FFD700;
-            margin-bottom: 1.5rem;
+        }
+
+        .modal h2 {
+            color: #FFD700;
+            margin-bottom: 20px;
             text-align: center;
         }
 
         .form-group {
-            margin-bottom: 1rem;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 8px;
+            color: #EAEAEA;
         }
 
         .form-group input {
             width: 100%;
-            padding: 0.8rem;
+            padding: 12px;
             border-radius: 5px;
             border: none;
             background-color: #3A3D5B;
             color: #EAEAEA;
+            font-size: 1rem;
         }
 
-        .modal-btn {
+        .form-submit {
             width: 100%;
-            padding: 0.8rem;
+            padding: 12px;
             background-color: #FFD700;
             color: #1E1E2F;
             border: none;
             border-radius: 5px;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 1rem;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease;
         }
 
-        .modal-btn:hover {
+        .form-submit:hover {
             background-color: #E6C200;
         }
 
-        .close-btn {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            color: #EAEAEA;
-            font-size: 1.5rem;
-            cursor: pointer;
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
-        .forgot-password {
-            text-align: right;
-            margin-top: 0.5rem;
+        @media (max-width: 768px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .auth-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .logo {
+                text-align: center;
+                width: 100%;
+            }
         }
 
-        .forgot-password a {
-            color: #FFD700;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
 
-        .switch-form {
-            text-align: center;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-        }
+            .auth-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
 
-        .switch-form a {
-            color: #FFD700;
-            text-decoration: none;
-            font-weight: bold;
+            .auth-btn {
+                width: 100%;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="header-top">
-            <div class="logo-container">
-                <a href="index.html" class="logo-img">
-                    <svg class="logo-img" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="40" height="40" rx="8" fill="#FFD700"/>
-                        <path d="M10 20C10 14.4772 14.4772 10 20 10C25.5228 10 30 14.4772 30 20C30 25.5228 25.5228 30 20 30C14.4772 30 10 25.5228 10 20Z" fill="#2B2D42"/>
-                        <path d="M15 15H25V25H15V15Z" fill="#FFD700"/>
-                        <path d="M15 15H20V20H15V15Z" fill="#3A3D5B"/>
-                        <path d="M20 20H25V25H20V20Z" fill="#3A3D5B"/>
-                        <path d="M15 25L20 20L25 15" stroke="#FFD700" stroke-width="2"/>
-                        <path d="M15 15L20 20L25 25" stroke="#FFD700" stroke-width="2"/>
-                    </svg>
-                </a>
-                <a href="index.html" class="logo-text">Multi Tool Hub</a>
-                <div class="social-icons">
-                    <a href="https://facebook.com" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://twitter.com" class="social-icon" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://instagram.com" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://linkedin.com" class="social-icon" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                </div>
+        <div class="container header-content">
+            <div class="logo">
+                <h1>IQMARTLLC.COM</h1>
+                <span>Multi Tool Hub</span>
             </div>
             <div class="auth-buttons">
-                <button class="auth-btn" id="loginBtn">Login</button>
-                <button class="auth-btn" id="signupBtn">Sign Up</button>
+                <a href="#" class="auth-btn login-btn" id="loginBtn">Login</a>
+                <a href="#" class="auth-btn signup-btn" id="signupBtn">Sign Up</a>
             </div>
-        </div>
-        <div class="search-container">
-            <i class="fas fa-search search-icon"></i>
-            <input type="text" class="search-input" placeholder="Search tools..." id="searchInput">
         </div>
     </header>
 
-    <main id="mainContent">
-        <!-- Dynamic content will be loaded here -->
-       <div class="tools-grid" id="toolsGrid">
-                <div class="tool-card" data-tool-name="Image Converter">
-    <h2>Image Converter</h2>
-    <p>Convert images between different formats like JPG, PNG, WEBP, and more with high quality.</p>
-    <a href="Image-Converter.html">
-        <button class="tool-btn">Use Tool</button>
-               </a>
-                </div>
-                
-                <div class="tool-card" data-tool-name="Image Compressor">
-                   <h2>Image Compressor</h2>
-                   <p>Reduce image file size without noticeable quality loss. Perfect for web optimization.</p>
-                   <a href="Image-Compressor.html">
-                   <button class="tool-btn">Use Tool</button>
-                     </a>
+    <main class="container">
+        <div class="search-container">
+            <form class="search-bar" id="searchForm">
+                <input type="text" placeholder="Search for tools..." id="searchInput">
+                <button type="submit">Search</button>
+            </form>
+        </div>
 
-                </div>
-                
-                <div class="tool-card" data-tool-name="Image Crop">
-                    <h2>Image Crop</h2>
-                    <p>Crop your images to any size or aspect ratio with precision and ease.</p>
-                    <a href="Image-Crop.html">
-                   <button class="tool-btn">Use Tool</button>
-                    </a>
-
-                </div>
-                
-                <div class="tool-card" data-tool-name="Video Converter">
-                    <h2>Video Converter</h2>
-                    <p>Convert videos between MP4, AVI, MOV, MKV and other popular formats.</p>
-                    <a href="Video-Converter.html">
-                    <button class="tool-btn">Use Tool</button>
-                     </a>
-
-                </div>
-                
-                <div class="tool-card" data-tool-name="Age Calculator">
-                    <h2>Age Calculator</h2>
-                    <p>Calculate exact age in years, months, and days based on birth date.</p>
-                    <button class="tool-btn">Use Tool</button>
-                </div>
-                
-                <div class="tool-card" data-tool-name="EMI Calculator">
-                    <h2>EMI Calculator</h2>
-                    <p>Calculate Equated Monthly Installments for loans with different interest rates.</p>
-                    <button class="tool-btn">Use Tool</button>
-                </div>
-                
-                <div class="tool-card" data-tool-name="SIP Calculator">
-                    <h2>SIP Calculator</h2>
-                    <p>Calculate returns on your Systematic Investment Plan (SIP) investments.</p>
-                    <button class="tool-btn">Use Tool</button>
-                </div>
-                
-                <div class="tool-card" data-tool-name="Audio Trim">
-                    <h2>Audio Trim</h2>
-                    <p>Cut and trim audio files to create perfect clips from your recordings.</p>
-                    <button class="tool-btn">Use Tool</button>
-                </div>
+        <div class="tools-grid">
+            <!-- Tool Card 1: Image Converter -->
+            <div class="tool-card">
+                <h2>Image Converter</h2>
+                <p>Convert your images between various formats like JPG, PNG, WEBP, and more with just a few clicks.</p>
+                <a href="#" class="btn" onclick="showAlert('Image Converter')">Use Tool</a>
             </div>
-        </div>
-        <!-- Privacy Policy Content (hidden by default) -->
-        <div id="privacyContent" class="content-page" style="display: none;">
-            <h1>Privacy Policy</h1>
-            <p>Last updated: January 2023</p>
-            
-            <h2>1. Information We Collect</h2>
-            <p>We collect information you provide directly to us when you use our services, including:</p>
-            <ul>
-                <li>Personal information (name, email address) when you create an account</li>
-                <li>Files you upload for processing through our tools</li>
-                <li>Usage data and preferences</li>
-            </ul>
-            
-            <h2>2. How We Use Your Information</h2>
-            <p>We use the information we collect to:</p>
-            <ul>
-                <li>Provide, maintain, and improve our services</li>
-                <li>Develop new tools and features</li>
-                <li>Communicate with you about updates and offers</li>
-                <li>Monitor and analyze usage patterns</li>
-            </ul>
-            
-            <h2>3. Data Security</h2>
-            <p>We implement appropriate security measures to protect your information:</p>
-            <ul>
-                <li>Encryption of data in transit</li>
-                <li>Secure storage practices</li>
-                <li>Regular security audits</li>
-            </ul>
-            
-            <h2>4. Third-Party Services</h2>
-            <p>We may use third-party services that collect information used to identify you, such as:</p>
-            <ul>
-                <li>Analytics providers</li>
-                <li>Advertising networks</li>
-                <li>Cloud storage providers</li>
-            </ul>
-            
-            <a href="#" class="back-btn" id="privacyBackBtn">Back to Home</a>
-        </div>
 
-        <!-- Terms of Service Content (hidden by default) -->
-        <div id="termsContent" class="content-page" style="display: none;">
-            <h1>Terms of Service</h1>
-            <p>Last updated: January 2023</p>
-            
-            <h2>1. Acceptance of Terms</h2>
-            <p>By accessing or using Multi Tool Hub, you agree to be bound by these Terms of Service.</p>
-            
-            <h2>2. Description of Service</h2>
-            <p>Multi Tool Hub provides various online tools for file conversion, editing, and calculations. We reserve the right to modify or discontinue services at any time.</p>
-            
-            <h2>3. User Responsibilities</h2>
-            <p>You agree not to:</p>
-            <ul>
-                <li>Use the service for any illegal purpose</li>
-                <li>Upload harmful or malicious files</li>
-                <li>Attempt to gain unauthorized access to our systems</li>
-                <li>Violate any laws in your jurisdiction</li>
-            </ul>
-            
-            <h2>4. Limitation of Liability</h2>
-            <p>Multi Tool Hub shall not be liable for any indirect, incidental, special, consequential or punitive damages resulting from your use of the service.</p>
-            
-            <h2>5. Changes to Terms</h2>
-            <p>We may modify these terms at any time. Your continued use of the service constitutes acceptance of the modified terms.</p>
-            
-            <a href="#" class="back-btn" id="termsBackBtn">Back to Home</a>
-        </div>
-
-        <!-- Contact Us Content (hidden by default) -->
-        <div id="contactContent" class="content-page" style="display: none;">
-            <h1>Contact Us</h1>
-            
-            <h2>Customer Support</h2>
-            <p>For any questions or support requests, please email us at:</p>
-            <p><strong>support@multitoolhub.com</strong></p>
-            <p>We typically respond within 24-48 hours.</p>
-            
-            <h2>Business Inquiries</h2>
-            <p>For partnership opportunities or business inquiries:</p>
-            <p><strong>business@multitoolhub.com</strong></p>
-            
-            <h2>Mailing Address</h2>
-            <p>Multi Tool Hub Inc.</p>
-            <p>123 Tech Street</p>
-            <p>San Francisco, CA 94107</p>
-            <p>United States</p>
-            
-            <h2>Follow Us</h2>
-            <div class="footer-social">
-                <a href="https://facebook.com" class="footer-social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://twitter.com" class="footer-social-icon" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="https://instagram.com" class="footer-social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://linkedin.com" class="footer-social-icon" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://youtube.com" class="footer-social-icon" target="_blank"><i class="fab fa-youtube"></i></a>
+            <!-- Tool Card 2: Image Compressor -->
+            <div class="tool-card">
+                <h2>Image Compressor</h2>
+                <p>Reduce the file size of your images without noticeable quality loss. Perfect for web optimization.</p>
+                <a href="#" class="btn" onclick="showAlert('Image Compressor')">Use Tool</a>
             </div>
-            
-            <a href="#" class="back-btn" id="contactBackBtn">Back to Home</a>
+
+            <!-- Tool Card 3: Image Crop -->
+            <div class="tool-card">
+                <h2>Image Crop</h2>
+                <p>Crop your images to the perfect size and aspect ratio. Simple and intuitive interface.</p>
+                <a href="#" class="btn" onclick="showAlert('Image Crop')">Use Tool</a>
+            </div>
+
+            <!-- Tool Card 4: Video Converter -->
+            <div class="tool-card">
+                <h2>Video Converter</h2>
+                <p>Convert videos between MP4, AVI, MOV, and other popular formats quickly and easily.</p>
+                <a href="#" class="btn" onclick="showAlert('Video Converter')">Use Tool</a>
+            </div>
+
+            <!-- Tool Card 5: Age Calculator -->
+            <div class="tool-card">
+                <h2>Age Calculator</h2>
+                <p>Calculate your exact age in years, months, and days based on your birth date.</p>
+                <a href="#" class="btn" onclick="showAlert('Age Calculator')">Use Tool</a>
+            </div>
+
+            <!-- Tool Card 6: EMI Calculator -->
+            <div class="tool-card">
+                <h2>EMI Calculator</h2>
+                <p>Calculate your Equated Monthly Installments for loans with different interest rates and terms.</p>
+                <a href="#" class="btn" onclick="showAlert('EMI Calculator')">Use Tool</a>
+            </div>
+
+            <!-- Tool Card 7: SIP Calculator -->
+            <div class="tool-card">
+                <h2>SIP Calculator</h2>
+                <p>Plan your Systematic Investment Plan returns with this comprehensive calculator.</p>
+                <a href="#" class="btn" onclick="showAlert('SIP Calculator')">Use Tool</a>
+            </div>
+
+            <!-- Tool Card 8: Audio Trim -->
+            <div class="tool-card">
+                <h2>Audio Trim</h2>
+                <p>Trim your audio files to the perfect length. Supports MP3, WAV, and other common formats.</p>
+                <a href="#" class="btn" onclick="showAlert('Audio Trim')">Use Tool</a>
+            </div>
         </div>
     </main>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#" class="footer-link" id="privacyLink">Privacy Policy</a>
-                <a href="#" class="footer-link" id="termsLink">Terms of Service</a>
-                <a href="#" class="footer-link" id="contactLink">Contact Us</a>
-                <a href="#" class="footer-link">FAQ</a>
-                <a href="#" class="footer-link">Blog</a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#" onclick="showAlert('Home')">Home</a></li>
+                        <li><a href="#" onclick="showAlert('All Tools')">All Tools</a></li>
+                        <li><a href="#" onclick="showAlert('Featured Tools')">Featured Tools</a></li>
+                        <li><a href="#" onclick="showAlert('New Tools')">New Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#" onclick="showModal('termsModal')">Terms & Conditions</a></li>
+                        <li><a href="#" onclick="showModal('privacyModal')">Privacy Policy</a></li>
+                        <li><a href="#" onclick="showModal('cookieModal')">Cookie Policy</a></li>
+                        <li><a href="#" onclick="showModal('refundModal')">Refund Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#" onclick="showModal('aboutModal')">About Us</a></li>
+                        <li><a href="#" onclick="showModal('contactModal')">Contact Us</a></li>
+                        <li><a href="#" onclick="showModal('faqModal')">FAQs</a></li>
+                        <li><a href="#" onclick="showModal('blogModal')">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <p style="margin-top: 20px;">
+                        <i class="fas fa-envelope"></i> support@iqmartllc.com<br>
+                        <i class="fas fa-phone"></i> +1 (555) 123-4567
+                    </p>
+                </div>
             </div>
-            <div class="footer-social">
-                <a href="https://facebook.com" class="footer-social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://twitter.com" class="footer-social-icon" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="https://instagram.com" class="footer-social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://linkedin.com" class="footer-social-icon" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://youtube.com" class="footer-social-icon" target="_blank"><i class="fab fa-youtube"></i></a>
+            <div class="copyright">
+                <p>&copy; 2023 IQMARTLLC.COM. All rights reserved.</p>
             </div>
-            <p class="footer-text">© 2023 Multi Tool Hub. All rights reserved.</p>
         </div>
     </footer>
 
     <!-- Login Modal -->
-    <div class="modal" id="loginModal">
+    <div id="loginModal" class="modal">
         <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2 class="modal-title">Login to Your Account</h2>
+            <span class="close-btn" id="closeLogin">&times;</span>
+            <h2>Login</h2>
             <form id="loginForm">
                 <div class="form-group">
                     <label for="loginEmail">Email</label>
@@ -656,22 +520,16 @@
                     <label for="loginPassword">Password</label>
                     <input type="password" id="loginPassword" required>
                 </div>
-                <div class="forgot-password">
-                    <a href="#">Forgot Password?</a>
-                </div>
-                <button type="submit" class="modal-btn">Login</button>
+                <button type="submit" class="form-submit">Login</button>
             </form>
-            <div class="switch-form">
-                Don't have an account? <a href="#" id="switchToSignup">Sign Up</a>
-            </div>
         </div>
     </div>
 
     <!-- Signup Modal -->
-    <div class="modal" id="signupModal">
+    <div id="signupModal" class="modal">
         <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2 class="modal-title">Create New Account</h2>
+            <span class="close-btn" id="closeSignup">&times;</span>
+            <h2>Sign Up</h2>
             <form id="signupForm">
                 <div class="form-group">
                     <label for="signupName">Full Name</label>
@@ -686,165 +544,200 @@
                     <input type="password" id="signupPassword" required>
                 </div>
                 <div class="form-group">
-                    <label for="signupConfirmPassword">Confirm Password</label>
-                    <input type="password" id="signupConfirmPassword" required>
+                    <label for="signupConfirm">Confirm Password</label>
+                    <input type="password" id="signupConfirm" required>
                 </div>
-                <button type="submit" class="modal-btn">Sign Up</button>
+                <button type="submit" class="form-submit">Create Account</button>
             </form>
-            <div class="switch-form">
-                Already have an account? <a href="#" id="switchToLogin">Login</a>
+        </div>
+    </div>
+
+    <!-- Legal Modals -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <span class="close-btn" onclick="closeModal('termsModal')">&times;</span>
+            <h2>Terms & Conditions</h2>
+            <div style="max-height: 60vh; overflow-y: auto; padding-right: 10px;">
+                <h3>1. Introduction</h3>
+                <p>Welcome to IQMARTLLC.COM ("Company", "we", "our", "us")! These Terms of Service ("Terms", "Terms of Service") govern your use of our website located at iqmartllc.com (together or individually "Service") operated by IQMARTLLC.COM.</p>
+                
+                <h3>2. Accounts</h3>
+                <p>When you create an account with us, you must provide us information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account on our Service.</p>
+                
+                <h3>3. Intellectual Property</h3>
+                <p>The Service and its original content, features, and functionality are and will remain the exclusive property of IQMARTLLC.COM and its licensors. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of IQMARTLLC.COM.</p>
+                
+                <h3>4. Termination</h3>
+                <p>We may terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.</p>
+                
+                <h3>5. Governing Law</h3>
+                <p>These Terms shall be governed and construed in accordance with the laws of the State of Delaware, United States, without regard to its conflict of law provisions.</p>
             </div>
         </div>
     </div>
 
+    <div id="privacyModal" class="modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <span class="close-btn" onclick="closeModal('privacyModal')">&times;</span>
+            <h2>Privacy Policy</h2>
+            <div style="max-height: 60vh; overflow-y: auto; padding-right: 10px;">
+                <h3>1. Information We Collect</h3>
+                <p>We collect several different types of information for various purposes to provide and improve our Service to you.</p>
+                
+                <h3>2. Use of Data</h3>
+                <p>IQMARTLLC.COM uses the collected data for various purposes:
+                <ul>
+                    <li>To provide and maintain our Service</li>
+                    <li>To notify you about changes to our Service</li>
+                    <li>To allow you to participate in interactive features of our Service</li>
+                    <li>To provide customer support</li>
+                    <li>To gather analysis or valuable information so that we can improve our Service</li>
+                </ul>
+                </p>
+                
+                <h3>3. Data Security</h3>
+                <p>The security of your data is important to us but remember that no method of transmission over the Internet or method of electronic storage is 100% secure.</p>
+                
+                <h3>4. Changes to This Privacy Policy</h3>
+                <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('contactModal')">&times;</span>
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="contactName">Your Name</label>
+                    <input type="text" id="contactName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Email</label>
+                    <input type="email" id="contactEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactSubject">Subject</label>
+                    <input type="text" id="contactSubject" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactMessage">Message</label>
+                    <textarea id="contactMessage" rows="4" style="width: 100%; padding: 12px; border-radius: 5px; border: none; background-color: #3A3D5B; color: #EAEAEA; font-size: 1rem;" required></textarea>
+                </div>
+                <button type="submit" class="form-submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+
     <script>
-        // Navigation between pages
-        document.getElementById('privacyLink').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('homeContent').style.display = 'none';
-            document.getElementById('privacyContent').style.display = 'block';
-            document.getElementById('termsContent').style.display = 'none';
-            document.getElementById('contactContent').style.display = 'none';
-            window.scrollTo(0, 0);
-        });
-
-        document.getElementById('termsLink').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('homeContent').style.display = 'none';
-            document.getElementById('privacyContent').style.display = 'none';
-            document.getElementById('termsContent').style.display = 'block';
-            document.getElementById('contactContent').style.display = 'none';
-            window.scrollTo(0, 0);
-        });
-
-        document.getElementById('contactLink').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('homeContent').style.display = 'none';
-            document.getElementById('privacyContent').style.display = 'none';
-            document.getElementById('termsContent').style.display = 'none';
-            document.getElementById('contactContent').style.display = 'block';
-            window.scrollTo(0, 0);
-        });
-
-        // Back buttons
-        document.getElementById('privacyBackBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('homeContent').style.display = 'block';
-            document.getElementById('privacyContent').style.display = 'none';
-            window.scrollTo(0, 0);
-        });
-
-        document.getElementById('termsBackBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('homeContent').style.display = 'block';
-            document.getElementById('termsContent').style.display = 'none';
-            window.scrollTo(0, 0);
-        });
-
-        document.getElementById('contactBackBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('homeContent').style.display = 'block';
-            document.getElementById('contactContent').style.display = 'none';
-            window.scrollTo(0, 0);
-        });
-
-        // Tool buttons functionality
-        document.querySelectorAll('.tool-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const toolName = this.closest('.tool-card').querySelector('h2').textContent;
-                alert(Redirecting to ${toolName});
-            });
-        });
-
-        // Modal functionality
+        // DOM Elements
         const loginBtn = document.getElementById('loginBtn');
         const signupBtn = document.getElementById('signupBtn');
+        const closeLogin = document.getElementById('closeLogin');
+        const closeSignup = document.getElementById('closeSignup');
         const loginModal = document.getElementById('loginModal');
         const signupModal = document.getElementById('signupModal');
-        const closeBtns = document.querySelectorAll('.close-btn');
-        const switchToSignup = document.getElementById('switchToSignup');
-        const switchToLogin = document.getElementById('switchToLogin');
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+        const searchForm = document.getElementById('searchForm');
+        const searchInput = document.getElementById('searchInput');
+        const contactForm = document.getElementById('contactForm');
 
-        // Show login modal
-        loginBtn.addEventListener('click', () => {
-            loginModal.style.display = 'flex';
-            signupModal.style.display = 'none';
+        // Show modals
+        loginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginModal.style.display = 'block';
         });
 
-        // Show signup modal
-        signupBtn.addEventListener('click', () => {
-            signupModal.style.display = 'flex';
-            loginModal.style.display = 'none';
+        signupBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            signupModal.style.display = 'block';
         });
 
         // Close modals
-        closeBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                loginModal.style.display = 'none';
-                signupModal.style.display = 'none';
-            });
-        });
-
-        // Switch between login and signup
-        switchToSignup.addEventListener('click', (e) => {
-            e.preventDefault();
+        closeLogin.addEventListener('click', () => {
             loginModal.style.display = 'none';
-            signupModal.style.display = 'flex';
         });
 
-        switchToLogin.addEventListener('click', (e) => {
-            e.preventDefault();
+        closeSignup.addEventListener('click', () => {
             signupModal.style.display = 'none';
-            loginModal.style.display = 'flex';
         });
+
+        // Modal functions
+        function showModal(modalId) {
+            event.preventDefault();
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
 
         // Close modal when clicking outside
         window.addEventListener('click', (e) => {
-            if (e.target === loginModal) {
-                loginModal.style.display = 'none';
-            }
-            if (e.target === signupModal) {
-                signupModal.style.display = 'none';
+            if (e.target.classList.contains('modal')) {
+                e.target.style.display = 'none';
             }
         });
 
         // Form submissions
-        document.getElementById('loginForm').addEventListener('submit', (e) => {
+        loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Login functionality would be implemented here');
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            alert(`Login attempt with:\nEmail: ${email}\nPassword: ${password}`);
             loginModal.style.display = 'none';
         });
 
-        document.getElementById('signupForm').addEventListener('submit', (e) => {
+        signupForm.addEventListener('submit', (e) => {
             e.preventDefault();
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
             const password = document.getElementById('signupPassword').value;
-            const confirmPassword = document.getElementById('signupConfirmPassword').value;
+            const confirm = document.getElementById('signupConfirm').value;
             
-            if (password !== confirmPassword) {
+            if (password !== confirm) {
                 alert('Passwords do not match!');
                 return;
             }
             
-            alert('Account created successfully!');
+            alert(`Account created for:\nName: ${name}\nEmail: ${email}`);
             signupModal.style.display = 'none';
         });
 
-        // Search functionality
-        const searchInput = document.getElementById('searchInput');
-        const toolsGrid = document.getElementById('toolsGrid');
-        const toolCards = document.querySelectorAll('.tool-card');
-
-        searchInput.addEventListener('input', () => {
-            const searchTerm = searchInput.value.toLowerCase();
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const subject = document.getElementById('contactSubject').value;
+            const message = document.getElementById('contactMessage').value;
             
-            toolCards.forEach(card => {
-                const toolName = card.getAttribute('data-tool-name').toLowerCase();
-                if (toolName.includes(searchTerm)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+            alert(`Thank you for your message, ${name}!\nWe'll respond to your inquiry about "${subject}" shortly.`);
+            closeModal('contactModal');
+        });
+
+        // Search functionality
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const query = searchInput.value.trim();
+            
+            if (query) {
+                alert(`Searching for: "${query}"\nIn a real implementation, this would filter the tools.`);
+            } else {
+                alert('Please enter a search term');
+            }
+        });
+
+        // Tool alert function
+        function showAlert(toolName) {
+            alert(`You clicked on the ${toolName} tool. In a real implementation, this would open the tool.`);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('IQMARTLLC.COM is ready!');
         });
     </script>
 </body>
