@@ -95,6 +95,7 @@
         .search-container {
             width: 100%;
             margin: 20px 0;
+            position: relative;
         }
 
         .search-bar {
@@ -126,6 +127,74 @@
 
         .search-bar button:hover {
             background-color: #E6C200;
+        }
+
+        .search-results {
+            display: none;
+            position: absolute;
+            width: 100%;
+            background-color: #3A3D5B;
+            border-radius: 0 0 5px 5px;
+            z-index: 10;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .search-results.show {
+            display: block;
+        }
+
+        .search-result-item {
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .search-result-item:hover {
+            background-color: #2B2D42;
+        }
+
+        /* Activity Log */
+        .activity-log {
+            background-color: #2B2D42;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(255, 215, 0, 0.2);
+        }
+
+        .activity-log h2 {
+            color: #FFD700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .activity-log h2 i {
+            font-size: 1.2em;
+        }
+
+        .log-entries {
+            max-height: 200px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .log-entry {
+            padding: 10px 0;
+            border-bottom: 1px solid #3A3D5B;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+
+        .log-time {
+            color: #FFD700;
+            font-size: 0.8rem;
         }
 
         /* Tools Grid */
@@ -391,66 +460,78 @@
     <main class="container">
         <div class="search-container">
             <form class="search-bar" id="searchForm">
-                <input type="text" placeholder="Search for tools..." id="searchInput">
+                <input type="text" placeholder="Search for tools..." id="searchInput" autocomplete="off">
                 <button type="submit">Search</button>
             </form>
+            <div class="search-results" id="searchResults"></div>
         </div>
 
-        <div class="tools-grid">
+        <div class="activity-log">
+            <h2><i class="fas fa-history"></i> Recent Activity</h2>
+            <div class="log-entries" id="activityLog">
+                <!-- Activity log entries will be added here dynamically -->
+                <div class="log-entry">
+                    <span>Welcome to IQMARTLLC.COM!</span>
+                    <span class="log-time">Just now</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="tools-grid" id="toolsGrid">
             <!-- Tool Card 1: Image Converter -->
-            <div class="tool-card">
+            <div class="tool-card" data-tool-name="Image Converter" data-tool-desc="Convert between image formats">
                 <h2>Image Converter</h2>
                 <p>Convert your images between various formats like JPG, PNG, WEBP, and more with just a few clicks.</p>
-                <a href="#" class="btn" onclick="showAlert('Image Converter')">Use Tool</a>
+                <a href="#" class="btn" onclick="useTool('Image Converter')">Use Tool</a>
             </div>
 
             <!-- Tool Card 2: Image Compressor -->
-            <div class="tool-card">
+            <div class="tool-card" data-tool-name="Image Compressor" data-tool-desc="Reduce image file size">
                 <h2>Image Compressor</h2>
                 <p>Reduce the file size of your images without noticeable quality loss. Perfect for web optimization.</p>
-                <a href="#" class="btn" onclick="showAlert('Image Compressor')">Use Tool</a>
+                <a href="#" class="btn" onclick="useTool('Image Compressor')">Use Tool</a>
             </div>
 
             <!-- Tool Card 3: Image Crop -->
-            <div class="tool-card">
+            <div class="tool-card" data-tool-name="Image Crop" data-tool-desc="Crop images to size">
                 <h2>Image Crop</h2>
                 <p>Crop your images to the perfect size and aspect ratio. Simple and intuitive interface.</p>
-                <a href="#" class="btn" onclick="showAlert('Image Crop')">Use Tool</a>
+                <a href="#" class="btn" onclick="useTool('Image Crop')">Use Tool</a>
             </div>
 
             <!-- Tool Card 4: Video Converter -->
-            <div class="tool-card">
+            <div class="tool-card" data-tool-name="Video Converter" data-tool-desc="Convert video formats">
                 <h2>Video Converter</h2>
                 <p>Convert videos between MP4, AVI, MOV, and other popular formats quickly and easily.</p>
-                <a href="#" class="btn" onclick="showAlert('Video Converter')">Use Tool</a>
+                <a href="#" class="btn" onclick="useTool('Video Converter')">Use Tool</a>
             </div>
 
             <!-- Tool Card 5: Age Calculator -->
-            <div class="tool-card">
+            <div class="tool-card" data-tool-name="Age Calculator" data-tool-desc="Calculate exact age">
                 <h2>Age Calculator</h2>
                 <p>Calculate your exact age in years, months, and days based on your birth date.</p>
-                <a href="#" class="btn" onclick="showAlert('Age Calculator')">Use Tool</a>
+                <a href="#" class="btn" onclick="useTool('Age Calculator')">Use Tool</a>
             </div>
 
             <!-- Tool Card 6: EMI Calculator -->
-            <div class="tool-card">
+            <div class="tool-card" data-tool-name="EMI Calculator" data-tool-desc="Calculate loan payments">
                 <h2>EMI Calculator</h2>
                 <p>Calculate your Equated Monthly Installments for loans with different interest rates and terms.</p>
-                <a href="#" class="btn" onclick="showAlert('EMI Calculator')">Use Tool</a>
+                <a href="#" class="btn" onclick="useTool('EMI Calculator')">Use Tool</a>
             </div>
 
             <!-- Tool Card 7: SIP Calculator -->
-            <div class="tool-card">
+            <div class="tool-card" data-tool-name="SIP Calculator" data-tool-desc="Plan investments">
                 <h2>SIP Calculator</h2>
                 <p>Plan your Systematic Investment Plan returns with this comprehensive calculator.</p>
-                <a href="#" class="btn" onclick="showAlert('SIP Calculator')">Use Tool</a>
+                <a href="#" class="btn" onclick="useTool('SIP Calculator')">Use Tool</a>
             </div>
 
             <!-- Tool Card 8: Audio Trim -->
-            <div class="tool-card">
+            <div class="tool-card" data-tool-name="Audio Trim" data-tool-desc="Trim audio files">
                 <h2>Audio Trim</h2>
                 <p>Trim your audio files to the perfect length. Supports MP3, WAV, and other common formats.</p>
-                <a href="#" class="btn" onclick="showAlert('Audio Trim')">Use Tool</a>
+                <a href="#" class="btn" onclick="useTool('Audio Trim')">Use Tool</a>
             </div>
         </div>
     </main>
@@ -642,7 +723,18 @@
         const signupForm = document.getElementById('signupForm');
         const searchForm = document.getElementById('searchForm');
         const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
         const contactForm = document.getElementById('contactForm');
+        const toolsGrid = document.getElementById('toolsGrid');
+        const toolCards = document.querySelectorAll('.tool-card');
+        const activityLog = document.getElementById('activityLog');
+
+        // Tool data for search
+        const tools = Array.from(toolCards).map(card => ({
+            element: card,
+            name: card.getAttribute('data-tool-name'),
+            desc: card.getAttribute('data-tool-desc')
+        }));
 
         // Show modals
         loginBtn.addEventListener('click', (e) => {
@@ -719,20 +811,86 @@
         });
 
         // Search functionality
-        searchForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const query = searchInput.value.trim();
+        searchInput.addEventListener('input', function() {
+            const query = this.value.trim().toLowerCase();
             
-            if (query) {
-                alert(`Searching for: "${query}"\nIn a real implementation, this would filter the tools.`);
-            } else {
-                alert('Please enter a search term');
+            if (query.length === 0) {
+                searchResults.classList.remove('show');
+                return;
+            }
+            
+            const filteredTools = tools.filter(tool => 
+                tool.name.toLowerCase().includes(query) || 
+                tool.desc.toLowerCase().includes(query)
+            );
+            
+            displaySearchResults(filteredTools);
+        });
+
+        function displaySearchResults(results) {
+            searchResults.innerHTML = '';
+            
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="search-result-item">No tools found</div>';
+                searchResults.classList.add('show');
+                return;
+            }
+            
+            results.forEach(tool => {
+                const resultItem = document.createElement('div');
+                resultItem.className = 'search-result-item';
+                resultItem.innerHTML = `
+                    <strong>${tool.name}</strong>
+                    <div style="font-size: 0.8rem; color: #aaa;">${tool.desc}</div>
+                `;
+                resultItem.addEventListener('click', () => {
+                    searchInput.value = tool.name;
+                    searchResults.classList.remove('show');
+                    // Scroll to the tool
+                    tool.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Highlight briefly
+                    tool.element.style.boxShadow = '0 0 0 3px rgba(255, 215, 0, 0.5)';
+                    setTimeout(() => {
+                        tool.element.style.boxShadow = '';
+                    }, 2000);
+                });
+                searchResults.appendChild(resultItem);
+            });
+            
+            searchResults.classList.add('show');
+        }
+
+        // Close search results when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!searchForm.contains(e.target)) {
+                searchResults.classList.remove('show');
             }
         });
 
-        // Tool alert function
-        function showAlert(toolName) {
-            alert(`You clicked on the ${toolName} tool. In a real implementation, this would open the tool.`);
+        // Tool usage function
+        function useTool(toolName) {
+            event.preventDefault();
+            
+            // Add to activity log
+            const now = new Date();
+            const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            
+            const logEntry = document.createElement('div');
+            logEntry.className = 'log-entry';
+            logEntry.innerHTML = `
+                <span>Used ${toolName}</span>
+                <span class="log-time">${timeString}</span>
+            `;
+            
+            // Add to top of log
+            activityLog.insertBefore(logEntry, activityLog.firstChild);
+            
+            // Keep only the last 5 entries
+            if (activityLog.children.length > 5) {
+                activityLog.removeChild(activityLog.lastChild);
+            }
+            
+            alert(`Opening ${toolName}...`);
         }
 
         // Initialize
