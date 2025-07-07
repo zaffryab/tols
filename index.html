@@ -43,13 +43,24 @@
             flex-wrap: wrap;
         }
 
-        .logo h1 {
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text h1 {
             color: #FFD700;
             font-size: 2rem;
             letter-spacing: 1px;
         }
 
-        .logo span {
+        .logo-text span {
             font-size: 0.8rem;
             color: #EAEAEA;
             display: block;
@@ -423,6 +434,7 @@
             .logo {
                 text-align: center;
                 width: 100%;
+                justify-content: center;
             }
         }
 
@@ -447,8 +459,11 @@
     <header>
         <div class="container header-content">
             <div class="logo">
-                <h1>IQMARTLLC.COM</h1>
-                <span>Multi Tool Hub</span>
+                <img src="https://via.placeholder.com/50x50/FFD700/1E1E2F?text=IQ" alt="IQMARTLLC Logo">
+                <div class="logo-text">
+                    <h1>IQMARTLLC.COM</h1>
+                    <span>Multi Tool Hub</span>
+                </div>
             </div>
             <div class="auth-buttons">
                 <a href="#" class="auth-btn login-btn" id="loginBtn">Login</a>
