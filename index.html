@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IQ MART</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #1E1E2F;
+            color: #EAEAEA;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #2B2D42;
+            padding: 1rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .header-top {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .social-icon {
+            color: #EAEAEA;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-icon:hover {
+            color: #FFD700;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .auth-btn {
+            padding: 0.5rem 1rem;
+            background-color: transparent;
+            border: 1px solid #FFD700;
+            color: #FFD700;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .auth-btn:hover {
+            background-color: #FFD700;
+            color: #1E1E2F;
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            padding-left: 3rem;
+            border-radius: 25px;
+            border: none;
+            background-color: #3A3D5B;
+            color: #EAEAEA;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #EAEAEA;
+        }
+
+        /* Main Content Styles */
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 300px); /* Adjust based on footer height */
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #FFD700;
+            font-size: 2.5rem;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .tool-card {
+            background-color: #3A3D5B;
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(255, 215, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .tool-card:hover {
+            background-color: #FFD700;
+            color: #1E1E2F;
+            transform: translateY(-5px);
+        }
+
+        .tool-card h2 {
+            margin-bottom: 0.8rem;
+            color: inherit;
+        }
+
+        .tool-card p {
+            margin-bottom: 1.5rem;
+            color: inherit;
+            flex-grow: 1;
+        }
+
+        .tool-btn {
+            padding: 0.6rem 1rem;
+            background-color: #FFD700;
+            color: #1E1E2F;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .tool-card:hover .tool-btn {
+            background-color: #1E1E2F;
+            color: #FFD700;
+        }
+
+        .tool-btn:hover {
+            background-color: #E6C200 !important;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #2B2D42;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-link {
+            color: #EAEAEA;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-link:hover {
+            color: #FFD700;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .footer-social-icon {
+            color: #EAEAEA;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-social-icon:hover {
+            color: #FFD700;
+        }
+
+        .footer-text {
+            color: #EAEAEA;
+            margin-top: 1rem;
+        }
+
+        /* Additional Page Styles */
+        .content-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #2B2D42;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .content-page h1 {
+            color: #FFD700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .content-page h2 {
+            color: #FFD700;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .content-page p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .content-page ul {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+
+        .content-page li {
+            margin-bottom: 0.5rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.6rem 1.2rem;
+            background-color: #FFD700;
+            color: #1E1E2F;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .back-btn:hover {
+            background-color: #E6C200;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-top {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .logo-container {
+                margin-bottom: 0.5rem;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .social-icons {
+                margin-top: 0.5rem;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #2B2D42;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-title {
+            color: #FFD700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 5px;
+            border: none;
+            background-color: #3A3D5B;
+            color: #EAEAEA;
+        }
+
+        .modal-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #FFD700;
+            color: #1E1E2F;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .modal-btn:hover {
+            background-color: #E6C200;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: #EAEAEA;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .forgot-password a {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .switch-form {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .switch-form a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="logo-container">
+                <a href="index.html" class="logo-img">
+                    <svg class="logo-img" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="8" fill="#FFD700"/>
+                        <path d="M10 20C10 14.4772 14.4772 10 20 10C25.5228 10 30 14.4772 30 20C30 25.5228 25.5228 30 20 30C14.4772 30 10 25.5228 10 20Z" fill="#2B2D42"/>
+                        <path d="M15 15H25V25H15V15Z" fill="#FFD700"/>
+                        <path d="M15 15H20V20H15V15Z" fill="#3A3D5B"/>
+                        <path d="M20 20H25V25H20V20Z" fill="#3A3D5B"/>
+                        <path d="M15 25L20 20L25 15" stroke="#FFD700" stroke-width="2"/>
+                        <path d="M15 15L20 20L25 25" stroke="#FFD700" stroke-width="2"/>
+                    </svg>
+                </a>
+                <a href="index.html" class="logo-text">Multi Tool Hub</a>
+                <div class="social-icons">
+                    <a href="https://facebook.com" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" class="social-icon" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com" class="social-icon" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="auth-buttons">
+                <button class="auth-btn" id="loginBtn">Login</button>
+                <button class="auth-btn" id="signupBtn">Sign Up</button>
+            </div>
+        </div>
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-input" placeholder="Search tools..." id="searchInput">
+        </div>
+    </header>
+
+    <main id="mainContent">
+        <!-- Dynamic content will be loaded here -->
+       <div class="tools-grid" id="toolsGrid">
+                <div class="tool-card" data-tool-name="Image Converter">
+    <h2>Image Converter</h2>
+    <p>Convert images between different formats like JPG, PNG, WEBP, and more with high quality.</p>
+    <a href="Image-Converter.html">
+        <button class="tool-btn">Use Tool</button>
+               </a>
+                </div>
+                
+                <div class="tool-card" data-tool-name="Image Compressor">
+                   <h2>Image Compressor</h2>
+                   <p>Reduce image file size without noticeable quality loss. Perfect for web optimization.</p>
+                   <a href="Image-Compressor.html">
+                   <button class="tool-btn">Use Tool</button>
+                     </a>
+
+                </div>
+                
+                <div class="tool-card" data-tool-name="Image Crop">
+                    <h2>Image Crop</h2>
+                    <p>Crop your images to any size or aspect ratio with precision and ease.</p>
+                    <a href="Image-Crop.html">
+                   <button class="tool-btn">Use Tool</button>
+                    </a>
+
+                </div>
+                
+                <div class="tool-card" data-tool-name="Video Converter">
+                    <h2>Video Converter</h2>
+                    <p>Convert videos between MP4, AVI, MOV, MKV and other popular formats.</p>
+                    <a href="Video-Converter.html">
+                    <button class="tool-btn">Use Tool</button>
+                     </a>
+
+                </div>
+                
+                <div class="tool-card" data-tool-name="Age Calculator">
+                    <h2>Age Calculator</h2>
+                    <p>Calculate exact age in years, months, and days based on birth date.</p>
+                    <button class="tool-btn">Use Tool</button>
+                </div>
+                
+                <div class="tool-card" data-tool-name="EMI Calculator">
+                    <h2>EMI Calculator</h2>
+                    <p>Calculate Equated Monthly Installments for loans with different interest rates.</p>
+                    <button class="tool-btn">Use Tool</button>
+                </div>
+                
+                <div class="tool-card" data-tool-name="SIP Calculator">
+                    <h2>SIP Calculator</h2>
+                    <p>Calculate returns on your Systematic Investment Plan (SIP) investments.</p>
+                    <button class="tool-btn">Use Tool</button>
+                </div>
+                
+                <div class="tool-card" data-tool-name="Audio Trim">
+                    <h2>Audio Trim</h2>
+                    <p>Cut and trim audio files to create perfect clips from your recordings.</p>
+                    <button class="tool-btn">Use Tool</button>
+                </div>
+            </div>
+        </div>
+        <!-- Privacy Policy Content (hidden by default) -->
+        <div id="privacyContent" class="content-page" style="display: none;">
+            <h1>Privacy Policy</h1>
+            <p>Last updated: January 2023</p>
+            
+            <h2>1. Information We Collect</h2>
+            <p>We collect information you provide directly to us when you use our services, including:</p>
+            <ul>
+                <li>Personal information (name, email address) when you create an account</li>
+                <li>Files you upload for processing through our tools</li>
+                <li>Usage data and preferences</li>
+            </ul>
+            
+            <h2>2. How We Use Your Information</h2>
+            <p>We use the information we collect to:</p>
+            <ul>
+                <li>Provide, maintain, and improve our services</li>
+                <li>Develop new tools and features</li>
+                <li>Communicate with you about updates and offers</li>
+                <li>Monitor and analyze usage patterns</li>
+            </ul>
+            
+            <h2>3. Data Security</h2>
+            <p>We implement appropriate security measures to protect your information:</p>
+            <ul>
+                <li>Encryption of data in transit</li>
+                <li>Secure storage practices</li>
+                <li>Regular security audits</li>
+            </ul>
+            
+            <h2>4. Third-Party Services</h2>
+            <p>We may use third-party services that collect information used to identify you, such as:</p>
+            <ul>
+                <li>Analytics providers</li>
+                <li>Advertising networks</li>
+                <li>Cloud storage providers</li>
+            </ul>
+            
+            <a href="#" class="back-btn" id="privacyBackBtn">Back to Home</a>
+        </div>
+
+        <!-- Terms of Service Content (hidden by default) -->
+        <div id="termsContent" class="content-page" style="display: none;">
+            <h1>Terms of Service</h1>
+            <p>Last updated: January 2023</p>
+            
+            <h2>1. Acceptance of Terms</h2>
+            <p>By accessing or using Multi Tool Hub, you agree to be bound by these Terms of Service.</p>
+            
+            <h2>2. Description of Service</h2>
+            <p>Multi Tool Hub provides various online tools for file conversion, editing, and calculations. We reserve the right to modify or discontinue services at any time.</p>
+            
+            <h2>3. User Responsibilities</h2>
+            <p>You agree not to:</p>
+            <ul>
+                <li>Use the service for any illegal purpose</li>
+                <li>Upload harmful or malicious files</li>
+                <li>Attempt to gain unauthorized access to our systems</li>
+                <li>Violate any laws in your jurisdiction</li>
+            </ul>
+            
+            <h2>4. Limitation of Liability</h2>
+            <p>Multi Tool Hub shall not be liable for any indirect, incidental, special, consequential or punitive damages resulting from your use of the service.</p>
+            
+            <h2>5. Changes to Terms</h2>
+            <p>We may modify these terms at any time. Your continued use of the service constitutes acceptance of the modified terms.</p>
+            
+            <a href="#" class="back-btn" id="termsBackBtn">Back to Home</a>
+        </div>
+
+        <!-- Contact Us Content (hidden by default) -->
+        <div id="contactContent" class="content-page" style="display: none;">
+            <h1>Contact Us</h1>
+            
+            <h2>Customer Support</h2>
+            <p>For any questions or support requests, please email us at:</p>
+            <p><strong>support@multitoolhub.com</strong></p>
+            <p>We typically respond within 24-48 hours.</p>
+            
+            <h2>Business Inquiries</h2>
+            <p>For partnership opportunities or business inquiries:</p>
+            <p><strong>business@multitoolhub.com</strong></p>
+            
+            <h2>Mailing Address</h2>
+            <p>Multi Tool Hub Inc.</p>
+            <p>123 Tech Street</p>
+            <p>San Francisco, CA 94107</p>
+            <p>United States</p>
+            
+            <h2>Follow Us</h2>
+            <div class="footer-social">
+                <a href="https://facebook.com" class="footer-social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com" class="footer-social-icon" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com" class="footer-social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://linkedin.com" class="footer-social-icon" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://youtube.com" class="footer-social-icon" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <a href="#" class="back-btn" id="contactBackBtn">Back to Home</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#" class="footer-link" id="privacyLink">Privacy Policy</a>
+                <a href="#" class="footer-link" id="termsLink">Terms of Service</a>
+                <a href="#" class="footer-link" id="contactLink">Contact Us</a>
+                <a href="#" class="footer-link">FAQ</a>
+                <a href="#" class="footer-link">Blog</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://facebook.com" class="footer-social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com" class="footer-social-icon" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com" class="footer-social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://linkedin.com" class="footer-social-icon" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://youtube.com" class="footer-social-icon" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="footer-text">© 2023 Multi Tool Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 class="modal-title">Login to Your Account</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <div class="forgot-password">
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button type="submit" class="modal-btn">Login</button>
+            </form>
+            <div class="switch-form">
+                Don't have an account? <a href="#" id="switchToSignup">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 class="modal-title">Create New Account</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" required>
+                </div>
+                <button type="submit" class="modal-btn">Sign Up</button>
+            </form>
+            <div class="switch-form">
+                Already have an account? <a href="#" id="switchToLogin">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation between pages
+        document.getElementById('privacyLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('homeContent').style.display = 'none';
+            document.getElementById('privacyContent').style.display = 'block';
+            document.getElementById('termsContent').style.display = 'none';
+            document.getElementById('contactContent').style.display = 'none';
+            window.scrollTo(0, 0);
+        });
+
+        document.getElementById('termsLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('homeContent').style.display = 'none';
+            document.getElementById('privacyContent').style.display = 'none';
+            document.getElementById('termsContent').style.display = 'block';
+            document.getElementById('contactContent').style.display = 'none';
+            window.scrollTo(0, 0);
+        });
+
+        document.getElementById('contactLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('homeContent').style.display = 'none';
+            document.getElementById('privacyContent').style.display = 'none';
+            document.getElementById('termsContent').style.display = 'none';
+            document.getElementById('contactContent').style.display = 'block';
+            window.scrollTo(0, 0);
+        });
+
+        // Back buttons
+        document.getElementById('privacyBackBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('homeContent').style.display = 'block';
+            document.getElementById('privacyContent').style.display = 'none';
+            window.scrollTo(0, 0);
+        });
+
+        document.getElementById('termsBackBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('homeContent').style.display = 'block';
+            document.getElementById('termsContent').style.display = 'none';
+            window.scrollTo(0, 0);
+        });
+
+        document.getElementById('contactBackBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('homeContent').style.display = 'block';
+            document.getElementById('contactContent').style.display = 'none';
+            window.scrollTo(0, 0);
+        });
+
+        // Tool buttons functionality
+        document.querySelectorAll('.tool-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const toolName = this.closest('.tool-card').querySelector('h2').textContent;
+                alert(Redirecting to ${toolName});
+            });
+        });
+
+        // Modal functionality
+        const loginBtn = document.getElementById('loginBtn');
+        const signupBtn = document.getElementById('signupBtn');
+        const loginModal = document.getElementById('loginModal');
+        const signupModal = document.getElementById('signupModal');
+        const closeBtns = document.querySelectorAll('.close-btn');
+        const switchToSignup = document.getElementById('switchToSignup');
+        const switchToLogin = document.getElementById('switchToLogin');
+
+        // Show login modal
+        loginBtn.addEventListener('click', () => {
+            loginModal.style.display = 'flex';
+            signupModal.style.display = 'none';
+        });
+
+        // Show signup modal
+        signupBtn.addEventListener('click', () => {
+            signupModal.style.display = 'flex';
+            loginModal.style.display = 'none';
+        });
+
+        // Close modals
+        closeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                loginModal.style.display = 'none';
+                signupModal.style.display = 'none';
+            });
+        });
+
+        // Switch between login and signup
+        switchToSignup.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginModal.style.display = 'none';
+            signupModal.style.display = 'flex';
+        });
+
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            signupModal.style.display = 'none';
+            loginModal.style.display = 'flex';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+            if (e.target === signupModal) {
+                signupModal.style.display = 'none';
+            }
+        });
+
+        // Form submissions
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Login functionality would be implemented here');
+            loginModal.style.display = 'none';
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('signupConfirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            alert('Account created successfully!');
+            signupModal.style.display = 'none';
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const toolsGrid = document.getElementById('toolsGrid');
+        const toolCards = document.querySelectorAll('.tool-card');
+
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            
+            toolCards.forEach(card => {
+                const toolName = card.getAttribute('data-tool-name').toLowerCase();
+                if (toolName.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
